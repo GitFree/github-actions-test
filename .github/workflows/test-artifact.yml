@@ -57,6 +57,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: kceb/git-message-action@v1
+        id: git_message
         with:
           sha: 'master'
       - name: Dump GitHub context
