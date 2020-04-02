@@ -57,6 +57,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: kceb/git-message-action@v1
+        with:
+          sha: 'b4c5381c3d263f148e9f88a44ba741aef0cb74c7'
       - name: Dump GitHub context
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
