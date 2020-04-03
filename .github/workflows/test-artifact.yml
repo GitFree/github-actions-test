@@ -49,30 +49,3 @@ jobs:
         run: |
           value=`cat homework/math-homework.txt`
           echo The result is $value
-  
-  job_4:
-    name: Display contexts
-    needs: job_3
-    runs-on: macos
-    steps:
-      - uses: actions/checkout@v2
-      - uses: kceb/git-message-action@v1
-        id: git_message
-        with:
-          sha: 'master'
-      - name: Dump GitHub context
-        env:
-          GITHUB_CONTEXT: ${{ toJson(github) }}
-        run: echo "$GITHUB_CONTEXT"
-      - name: Dump job context
-        env:
-          JOB_CONTEXT: ${{ toJson(job) }}
-        run: echo "$JOB_CONTEXT"
-      - name: Dump steps context
-        env:
-          STEPS_CONTEXT: ${{ toJson(steps) }}
-        run: echo "$STEPS_CONTEXT"
-      - name: Dump runner context
-        env:
-          RUNNER_CONTEXT: ${{ toJson(runner) }}
-        run: echo "$RUNNER_CONTEXT"
