@@ -30,8 +30,10 @@ jobs:
         run: 1/0
       - name: step 2- continue-on-error_true
         continue-on-error: true
+        if: ${{ success() }}
         run: 1/0
       - name: step 3- success
+        if: ${{ success() }}
         run: echo "OK"
   job_3:
     name: Test conditon 3
