@@ -10,10 +10,10 @@ jobs:
     steps:
       - name: step 1- continue-on-error_true 
         continue-on-error: true
-        run: echo 1/0
+        run: 1/0
       - name: step 2- continue-on-error_false
         continue-on-error: false
-        run: echo 1/0
+        run: 1/0
       - name: step 3- success
         run: echo "OK"
   job_2:
@@ -23,10 +23,10 @@ jobs:
     steps:
       - name: step 1- continue-on-error_true 
         continue-on-error: true
-        run: echo 1/0
+        run: 1/0
       - name: step 2- continue-on-error_false
         continue-on-error: false
-        run: echo 1/0
+        run: 1/0
       - name: step 3- success
         run: echo "OK"
   job_3:
@@ -35,9 +35,9 @@ jobs:
     steps:
       - name: step 1- continue-on-error_true 
         continue-on-error: true
-        run: echo 1/0
+        run: 1/0
       - name: step 2- continue-on-error_false
         continue-on-error: false
-        run: echo 1/0
+        run: 1/0
       - name: step 3- success
         run: echo "OK"
