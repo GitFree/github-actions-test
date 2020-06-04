@@ -26,7 +26,7 @@ jobs:
         continue-on-error: true
         run: 1/0
       - name: step 2- continue-on-error_false
-        continue-on-error: false
+        continue-on-error: true
         run: 1/0
       - name: step 3- success
         run: echo "OK"
