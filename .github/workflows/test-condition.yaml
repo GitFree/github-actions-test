@@ -1,4 +1,4 @@
-name: Test conditon
+name: Test Conditon
 
 on: [push]
 
@@ -8,35 +8,36 @@ jobs:
     runs-on: macos-latest
     continue-on-error: true
     steps:
-      - uses: actions/checkout@v2
-      - uses: kceb/git-message-action@v1
-        id: step_id_1
+      - name: step 1- continue-on-error_true 
         continue-on-error: true
-        with:
-          sha: 'master'
-      - uses: kceb/git-message-action@v1
-        id: step_id_2
-        with:
-          sha: 'master'
-      - name: Dump GitHub context
-        env:
-          GITHUB_CONTEXT: ${{ toJson(github) }}
-        run: echo "$GITHUB_CONTEXT"
+        run: echo 1/0
+      - name: step 2- continue-on-error_false
+        continue-on-error: false
+        run: echo 1/0
+      - name: step 3- success
+        run: echo "OK"
   job_2:
     name: Test conditon 2
     runs-on: macos-latest
+    continue-on-error: false
     steps:
-      - uses: actions/checkout@v2
-      - uses: kceb/git-message-action@v1
-        id: step_id_1
+      - name: step 1- continue-on-error_true 
         continue-on-error: true
-        with:
-          sha: 'master'
-      - uses: kceb/git-message-action@v1
-        id: step_id_2
-        with:
-          sha: 'master'
-      - name: Dump GitHub context
-        env:
-          GITHUB_CONTEXT: ${{ toJson(github) }}
-        run: echo "$GITHUB_CONTEXT"
+        run: echo 1/0
+      - name: step 2- continue-on-error_false
+        continue-on-error: false
+        run: echo 1/0
+      - name: step 3- success
+        run: echo "OK"
+  job_3:
+    name: Test conditon 3
+    runs-on: macos-latest
+    steps:
+      - name: step 1- continue-on-error_true 
+        continue-on-error: true
+        run: echo 1/0
+      - name: step 2- continue-on-error_false
+        continue-on-error: false
+        run: echo 1/0
+      - name: step 3- success
+        run: echo "OK"
