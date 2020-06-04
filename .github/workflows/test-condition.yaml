@@ -26,7 +26,7 @@ jobs:
     runs-on: macos-latest
     continue-on-error: false
     needs: job_1
-    if: ${{ failure() }}
+    if: ${{ success() }}
     steps:
       - name: step 1- continue-on-error_true 
         continue-on-error: true
