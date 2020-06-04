@@ -5,7 +5,7 @@ on: [push]
 jobs:
   job_1:
     name: job with matrix
-    runs-on: macos
+    runs-on: macos-latest
     strategy:
       matrix:
         node: [6, 8, 10]
