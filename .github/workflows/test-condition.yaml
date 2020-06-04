@@ -1,26 +1,42 @@
-name: Test contexts
+name: Test conditon
 
 on: [push]
 
 jobs:
   job_1:
-    name: Display contexts
+    name: Test conditon 1
     runs-on: macos-latest
+    continue-on-error: true
     steps:
       - uses: actions/checkout@v2
+      - uses: kceb/git-message-action@v1
+        id: step_id_1
+        continue-on-error: true
+        with:
+          sha: 'master'
+      - uses: kceb/git-message-action@v1
+        id: step_id_2
+        with:
+          sha: 'master'
       - name: Dump GitHub context
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
         run: echo "$GITHUB_CONTEXT"
-      - name: Dump job context
+  job_2:
+    name: Test conditon 2
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: kceb/git-message-action@v1
+        id: step_id_1
+        continue-on-error: true
+        with:
+          sha: 'master'
+      - uses: kceb/git-message-action@v1
+        id: step_id_2
+        with:
+          sha: 'master'
+      - name: Dump GitHub context
         env:
-          JOB_CONTEXT: ${{ toJson(job) }}
-        run: echo "$JOB_CONTEXT"
-      - name: Dump steps context
-        env:
-          STEPS_CONTEXT: ${{ toJson(steps) }}
-        run: echo "$STEPS_CONTEXT"
-      - name: Dump runner context
-        env:
-          RUNNER_CONTEXT: ${{ toJson(runner) }}
-        run: echo "$RUNNER_CONTEXT"
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "$GITHUB_CONTEXT"
