@@ -12,7 +12,7 @@ jobs:
         continue-on-error: true
         run: 1/0
       - name: step 2- continue-on-error_false
-        if: ${{ success() }}
+        if: ${{ failure() }}
         continue-on-error: false
         run: 1/0
       - name: step 3- success
@@ -22,12 +22,12 @@ jobs:
     runs-on: macos-latest
     continue-on-error: false
     needs: job_1
-    if: ${{ success() }}
+    if: ${{ failure() }}
     steps:
       - name: step 1- continue-on-error_true 
         continue-on-error: true
         run: 1/0
-      - name: step 2- continue-on-error_false
+      - name: step 2- continue-on-error_true
         continue-on-error: true
         run: 1/0
       - name: step 3- success
