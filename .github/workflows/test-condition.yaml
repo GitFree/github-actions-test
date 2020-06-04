@@ -6,7 +6,7 @@ jobs:
   job_1:
     name: Test conditon 1
     runs-on: macos-latest
-    continue-on-error: true
+    continue-on-error: false
     steps:
       - name: step 1- continue-on-error_true 
         continue-on-error: true
@@ -26,7 +26,7 @@ jobs:
     runs-on: macos-latest
     continue-on-error: false
     needs: job_1
-    if: ${{ success() }}
+    if: ${{ failure() }}
     steps:
       - name: step 1- continue-on-error_true 
         continue-on-error: true
@@ -42,6 +42,7 @@ jobs:
     name: Test conditon 3
     runs-on: macos-latest
     needs: job_2
+    if: ${{ success() }}
     steps:
       - name: step 3- success
         run: echo "OK"
