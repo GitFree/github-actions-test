@@ -5,16 +5,9 @@ on: [push]
 jobs:
   job_1:
     name: Display contexts
-    runs-on: macos
+    runs-on: macos-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: kceb/git-message-action@v1
-        id: step_id_1
-        with:
-          sha: 'master'
-      - uses: kceb/git-message-action@v1
-        with:
-          sha: 'master'     
       - name: Dump GitHub context
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
