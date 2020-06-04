@@ -42,7 +42,7 @@ jobs:
     name: Test conditon 3
     runs-on: macos-latest
     needs: job_2
-    if: ${{ success() }}
+    if: ${{ always() }}
     steps:
       - name: step 3- success
         run: echo "OK"
