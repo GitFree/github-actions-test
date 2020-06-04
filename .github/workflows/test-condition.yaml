@@ -10,7 +10,10 @@ jobs:
     steps:
       - name: step 1- continue-on-error_true 
         continue-on-error: true
-        run: 1/0
+        run: |
+            1/0
+            2/0
+            3/0
       - name: step 2- continue-on-error_false
         if: ${{ success() }}
         continue-on-error: false
