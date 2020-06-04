@@ -41,7 +41,7 @@ jobs:
   job_3:
     name: Test conditon 3
     runs-on: macos-latest
-    needs: job_2
+    #needs: job_2
     if: ${{ success() }}
     steps:
       - name: step 3- success
