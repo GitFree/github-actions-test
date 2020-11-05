@@ -11,10 +11,10 @@ jobs:
       - uses: kceb/git-message-action@v1
         id: step_id_1
         with:
-          sha: 'master'
+          sha: "context"
       - uses: kceb/git-message-action@v1
         with:
-          sha: 'master'     
+          sha: "context"    
       - name: Dump GitHub context
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
